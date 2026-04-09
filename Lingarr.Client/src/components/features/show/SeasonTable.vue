@@ -15,7 +15,7 @@
             :key="season.id"
             class="bg-primary text-sm text-accent-content md:text-base">
             <div
-                class="grid grid-cols-12"
+                class="hover-row grid grid-cols-12"
                 :class="{ 'cursor-pointer': season.episodes.length }"
                 @click="toggleSeason(season)">
                 <div class="col-span-6 flex select-none items-center px-4 py-2 md:col-span-3">

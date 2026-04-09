@@ -58,7 +58,7 @@
             <!-- Log Entries -->
             <div v-for="(log, index) in filteredLogs" :key="index" class="log-entry">
                 <div
-                    class="hover:bg-secondary/20 border-secondary/30 grid grid-cols-12 border-b py-2 transition-colors">
+                    class="hover-row border-secondary/30 grid grid-cols-12 border-b py-2">
                     <div class="col-span-1 px-4 text-gray-400">
                         {{ log.formattedTime }}
                     </div>

@@ -30,7 +30,7 @@
                     </div>
                     <div v-if="authStore.isCreatingUser">
                         <div
-                            class="hover:bg-accent/5 bg-accent/10 grid grid-cols-12 border-b border-accent">
+                            class="hover-row bg-accent/10 grid grid-cols-12 border-b border-accent">
                             <div class="col-span-7 flex items-center px-4 py-2 md:col-span-4">
                                 <div class="w-full">
                                     <InputComponent
@@ -99,7 +99,7 @@
                     </div>
                     <!-- Existing Users -->
                     <div v-for="user in authStore.users" :key="user.id">
-                        <div class="hover:bg-accent/5 grid grid-cols-12 border-b border-accent">
+                        <div class="hover-row grid grid-cols-12 border-b border-accent">
                             <div class="col-span-7 flex items-center px-4 py-2 md:col-span-4">
                                 <div v-if="authStore.editingUserId === user.id" class="w-full">
                                     <InputComponent
