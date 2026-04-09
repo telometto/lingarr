@@ -13,7 +13,7 @@
                 </span>
                 <span class="font-semibold">Radarr</span>
                 <div class="bg-accent/20 mt-1 flex items-center justify-between rounded p-2">
-                    <code class="min-w-0 overflow-x-auto text-sm">
+                    <code class="block min-w-0 overflow-x-auto text-sm">
                         {{ webhookUrl }}/api/webhook/radarr
                     </code>
                     <button
@@ -28,7 +28,7 @@
                 </div>
                 <span class="font-semibold">Sonarr</span>
                 <div class="bg-accent/20 mt-1 flex items-center justify-between rounded p-2">
-                    <code class="min-w-0 overflow-x-auto text-sm">
+                    <code class="block min-w-0 overflow-x-auto text-sm">
                         {{ webhookUrl }}/api/webhook/sonarr
                     </code>
                     <button
