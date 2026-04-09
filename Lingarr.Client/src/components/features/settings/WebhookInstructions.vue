@@ -52,6 +52,7 @@ import CheckMarkIcon from '@/components/icons/CheckMarkIcon.vue'
 
 const webhookUrl = window.location.origin
 const copied = ref<string | null>(null)
+let copyTimer: ReturnType<typeof setTimeout> | null = null
 
 const copy = async (url: string) => {
     if (!navigator.clipboard?.writeText) return
@@ -59,9 +60,11 @@ const copy = async (url: string) => {
     const key = url.endsWith('radarr') ? 'radarr' : 'sonarr'
     try {
         await navigator.clipboard.writeText(url)
+        if (copyTimer) clearTimeout(copyTimer)
         copied.value = key
-        setTimeout(() => {
+        copyTimer = setTimeout(() => {
             copied.value = null
+            copyTimer = null
         }, 2000)
     } catch {
         return
