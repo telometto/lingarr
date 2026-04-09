@@ -57,7 +57,10 @@ const copied = ref<string | null>(null)
 let copyTimer: ReturnType<typeof setTimeout> | null = null
 
 onBeforeUnmount(() => {
-    if (copyTimer) clearTimeout(copyTimer)
+    if (copyTimer !== null) {
+        clearTimeout(copyTimer)
+        copyTimer = null
+    }
 })
 
 const copy = async (url: string, key: 'radarr' | 'sonarr') => {
@@ -65,7 +68,7 @@ const copy = async (url: string, key: 'radarr' | 'sonarr') => {
 
     try {
         await navigator.clipboard.writeText(url)
-        if (copyTimer) clearTimeout(copyTimer)
+        if (copyTimer !== null) clearTimeout(copyTimer)
         copied.value = key
         copyTimer = setTimeout(() => {
             copied.value = null
