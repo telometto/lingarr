@@ -17,10 +17,11 @@
                         {{ webhookUrl }}/api/webhook/radarr
                     </code>
                     <button
+                        type="button"
                         class="hover-row cursor-pointer p-1"
                         title="Copy to clipboard"
                         aria-label="Copy Radarr webhook URL"
-                        @click="copy(`${webhookUrl}/api/webhook/radarr`)">
+                        @click="copy(`${webhookUrl}/api/webhook/radarr`, 'radarr')">
                         <CheckMarkIcon v-if="copied === 'radarr'" class="h-4 w-4 text-green-400" />
                         <CopyIcon v-else class="h-4 w-4" />
                     </button>
@@ -31,10 +32,11 @@
                         {{ webhookUrl }}/api/webhook/sonarr
                     </code>
                     <button
+                        type="button"
                         class="hover-row cursor-pointer p-1"
                         title="Copy to clipboard"
                         aria-label="Copy Sonarr webhook URL"
-                        @click="copy(`${webhookUrl}/api/webhook/sonarr`)">
+                        @click="copy(`${webhookUrl}/api/webhook/sonarr`, 'sonarr')">
                         <CheckMarkIcon v-if="copied === 'sonarr'" class="h-4 w-4 text-green-400" />
                         <CopyIcon v-else class="h-4 w-4" />
                     </button>
@@ -45,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onBeforeUnmount } from 'vue'
 import CardComponent from '@/components/common/CardComponent.vue'
 import CopyIcon from '@/components/icons/CopyIcon.vue'
 import CheckMarkIcon from '@/components/icons/CheckMarkIcon.vue'
@@ -54,10 +56,13 @@ const webhookUrl = window.location.origin
 const copied = ref<string | null>(null)
 let copyTimer: ReturnType<typeof setTimeout> | null = null
 
-const copy = async (url: string) => {
+onBeforeUnmount(() => {
+    if (copyTimer) clearTimeout(copyTimer)
+})
+
+const copy = async (url: string, key: 'radarr' | 'sonarr') => {
     if (!navigator.clipboard?.writeText) return
 
-    const key = url.endsWith('radarr') ? 'radarr' : 'sonarr'
     try {
         await navigator.clipboard.writeText(url)
         if (copyTimer) clearTimeout(copyTimer)
