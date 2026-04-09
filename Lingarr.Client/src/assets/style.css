@@ -207,7 +207,6 @@
 }
 
 /* Hover highlight for interactive elements */
-.cursor-pointer,
 .hover-row,
 [role='menuitem'],
 [role='button'],
@@ -218,7 +217,6 @@
         filter 0.15s ease;
 }
 
-.cursor-pointer:hover,
 .hover-row:hover,
 [role='menuitem']:hover,
 [role='button']:hover,
