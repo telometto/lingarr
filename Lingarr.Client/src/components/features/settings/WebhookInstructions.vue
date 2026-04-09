@@ -53,7 +53,7 @@ import CopyIcon from '@/components/icons/CopyIcon.vue'
 import CheckMarkIcon from '@/components/icons/CheckMarkIcon.vue'
 
 const webhookUrl = window.location.origin
-const copied = ref<string | null>(null)
+const copied = ref<'radarr' | 'sonarr' | null>(null)
 let copyTimer: ReturnType<typeof setTimeout> | null = null
 
 onBeforeUnmount(() => {
