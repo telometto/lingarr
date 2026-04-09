@@ -214,7 +214,8 @@
 }
 
 .hover-row:hover,
-.hover-row:focus-visible {
+.hover-row:focus-visible,
+.hover-row:focus-within {
     background-color: color-mix(in srgb, var(--accent) 15%, transparent);
     border-radius: inherit;
 }
