@@ -1,20 +1,20 @@
 <template>
     <div class="grid h-full grid-cols-[auto_1fr]">
         <aside class="w-[3.175rem] shrink-0 bg-secondary md:w-40">
-            <nav class="flex h-full flex-col pt-4 md:pl-4 md:pt-8">
-                <ul class="flex flex-col space-y-4">
+            <nav class="flex h-full flex-col px-2 pt-2 md:pt-6">
+                <ul class="flex flex-col space-y-1">
                     <li
                         v-for="(item, index) in menuItems"
                         :key="index"
                         :class="[
-                            'w-full hover:brightness-150',
+                            'w-full',
                             { 'brightness-150': $route.name === item.route }
                         ]">
                         <router-link
                             :to="{ name: item.route }"
                             :title="item.label"
                             :aria-label="item.label"
-                            class="flex w-full cursor-pointer items-center justify-center md:justify-start">
+                            class="hover-row flex w-full cursor-pointer items-center justify-center px-2 py-2 md:justify-start">
                             <component :is="item.icon" class="h-4 w-4 md:mr-3" />
                             <span class="hidden text-sm md:inline-block">
                                 {{ item.label }}
@@ -23,10 +23,10 @@
                     </li>
                     <li
                         v-if="settings.getSetting(SETTINGS.AUTH_ENABLED) == 'true'"
-                        class="text-primary-content/50 w-full hover:brightness-150"
+                        class="text-primary-content/50 w-full"
                         @click="handleLogout">
                         <div
-                            class="flex w-full cursor-pointer items-center justify-center md:justify-start">
+                            class="hover-row flex w-full cursor-pointer items-center justify-center px-2 py-2 md:justify-start">
                             <LogoutIcon class="h-4 w-4 md:mr-3" />
                             <span class="hidden text-sm md:inline-block">Logout</span>
                         </div>
