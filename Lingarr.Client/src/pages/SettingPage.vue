@@ -23,13 +23,14 @@
                     </li>
                     <li
                         v-if="settings.getSetting(SETTINGS.AUTH_ENABLED) == 'true'"
-                        class="text-primary-content/50 w-full"
-                        @click="handleLogout">
-                        <div
-                            class="hover-row flex w-full cursor-pointer items-center justify-center px-2 py-2 md:justify-start">
+                        class="text-primary-content/50 w-full">
+                        <button
+                            type="button"
+                            class="hover-row flex w-full cursor-pointer items-center justify-center px-2 py-2 md:justify-start"
+                            @click="handleLogout">
                             <LogoutIcon class="h-4 w-4 md:mr-3" />
                             <span class="hidden text-sm md:inline-block">Logout</span>
-                        </div>
+                        </button>
                     </li>
                 </ul>
             </nav>
