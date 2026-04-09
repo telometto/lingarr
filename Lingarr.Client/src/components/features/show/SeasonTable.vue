@@ -24,8 +24,8 @@
                 :tabindex="season.episodes.length ? 0 : undefined"
                 :aria-expanded="season.episodes.length ? expandedSeason?.id === season.id : undefined"
                 @click="toggleSeason(season)"
-                @keydown.enter.prevent="toggleSeason(season)"
-                @keydown.space.prevent="toggleSeason(season)">
+                @keydown.enter.self.prevent="toggleSeason(season)"
+                @keydown.space.self.prevent="toggleSeason(season)">
                 <div class="col-span-6 flex select-none items-center px-4 py-2 md:col-span-3">
                     <CaretButton
                         v-if="season.episodes.length"
