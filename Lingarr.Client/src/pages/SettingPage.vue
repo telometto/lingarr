@@ -27,6 +27,8 @@
                         <button
                             type="button"
                             class="hover-row flex w-full cursor-pointer items-center justify-center px-2 py-2 md:justify-start"
+                            aria-label="Logout"
+                            title="Logout"
                             @click="handleLogout">
                             <LogoutIcon class="h-4 w-4 md:mr-3" />
                             <span class="hidden text-sm md:inline-block">Logout</span>
