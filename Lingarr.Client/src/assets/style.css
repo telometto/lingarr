@@ -206,22 +206,14 @@
     opacity: 0;
 }
 
-/* Hover highlight for interactive elements */
-.hover-row,
-[role='menuitem'],
-[role='button'],
-[role='tab'],
-[role='option'] {
+/* Hover highlight for explicitly interactive elements */
+.hover-row {
     transition:
         background-color 0.15s ease,
         filter 0.15s ease;
 }
 
-.hover-row:hover,
-[role='menuitem']:hover,
-[role='button']:hover,
-[role='tab']:hover,
-[role='option']:hover {
+.hover-row:hover {
     background-color: color-mix(in srgb, var(--accent) 15%, transparent);
-    border-radius: 0.375rem;
+    border-radius: inherit;
 }
