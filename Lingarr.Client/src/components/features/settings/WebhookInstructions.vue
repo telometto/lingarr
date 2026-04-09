@@ -13,12 +13,13 @@
                 </span>
                 <span class="font-semibold">Radarr</span>
                 <div class="bg-accent/20 mt-1 flex items-center justify-between rounded p-2">
-                    <code class="text-sm">
+                    <code class="min-w-0 overflow-x-auto text-sm">
                         {{ webhookUrl }}/api/webhook/radarr
                     </code>
                     <button
                         class="hover-row cursor-pointer p-1"
                         title="Copy to clipboard"
+                        aria-label="Copy Radarr webhook URL"
                         @click="copy(`${webhookUrl}/api/webhook/radarr`)">
                         <CheckMarkIcon v-if="copied === 'radarr'" class="h-4 w-4 text-green-400" />
                         <CopyIcon v-else class="h-4 w-4" />
@@ -26,12 +27,13 @@
                 </div>
                 <span class="font-semibold">Sonarr</span>
                 <div class="bg-accent/20 mt-1 flex items-center justify-between rounded p-2">
-                    <code class="text-sm">
+                    <code class="min-w-0 overflow-x-auto text-sm">
                         {{ webhookUrl }}/api/webhook/sonarr
                     </code>
                     <button
                         class="hover-row cursor-pointer p-1"
                         title="Copy to clipboard"
+                        aria-label="Copy Sonarr webhook URL"
                         @click="copy(`${webhookUrl}/api/webhook/sonarr`)">
                         <CheckMarkIcon v-if="copied === 'sonarr'" class="h-4 w-4 text-green-400" />
                         <CopyIcon v-else class="h-4 w-4" />
@@ -52,11 +54,17 @@ const webhookUrl = window.location.origin
 const copied = ref<string | null>(null)
 
 const copy = async (url: string) => {
+    if (!navigator.clipboard?.writeText) return
+
     const key = url.endsWith('radarr') ? 'radarr' : 'sonarr'
-    await navigator.clipboard.writeText(url)
-    copied.value = key
-    setTimeout(() => {
-        copied.value = null
-    }, 2000)
+    try {
+        await navigator.clipboard.writeText(url)
+        copied.value = key
+        setTimeout(() => {
+            copied.value = null
+        }, 2000)
+    } catch {
+        return
+    }
 }
 </script>
